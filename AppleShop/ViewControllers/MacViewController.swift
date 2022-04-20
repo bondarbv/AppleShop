@@ -9,13 +9,86 @@ import UIKit
 
 class MacViewController: UIViewController {
     
-    let tabBarImage = UIImage(systemName: "desktopcomputer")
+    //MARK: - UI
+    let macStackView: UIStackView = {
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .fill
+        $0.spacing = 20
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIStackView())
     
+    let macLabel: UILabel = {
+        $0.text = "Macbook Pro"
+        $0.font = UIFont.boldSystemFont(ofSize: 30)
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
+    
+    let macSubtitle: UILabel = {
+        $0.text = "Supercharged for pros."
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
+    
+    let priceLabel: UILabel = {
+        $0.text = "From $1999"
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
+    
+    let macImageView: UIImageView = {
+        $0.image = UIImage(named: "mac")
+        return $0
+    }(UIImageView())
+    
+    let buyButton: UIButton = {
+        $0.setTitle("Buy", for: .normal)
+        $0.backgroundColor = .systemBlue
+        $0.layer.cornerRadius = 5
+        $0.addTarget(self, action: #selector(buy), for: .touchUpInside)
+        return $0
+    }(UIButton())
+    
+    //MARK: - ViewLifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
+        setupLayout()
         navigationItem.title = "Macs"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarItem = UITabBarItem(title: "Macs", image: tabBarImage, tag: 1)
+        tabBarItem = UITabBarItem(title: "Macs", image: UIImage(systemName: "desktopcomputer"), tag: 1)
     }
+    
+    //MARK: - Methods
+    @objc private func buy(sender: UIButton) {
+        if sender == buyButton {
+            let vc = OrderMacViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    //MARK: - Layout
+    private func constraints() {
+        NSLayoutConstraint.activate([
+            macStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            macStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            macStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            macImageView.heightAnchor.constraint(equalToConstant: 322)
+        ])
+    }
+    
+    private func setupLayout() {
+        view.backgroundColor = .systemGray6
+        view.addSubview(macStackView)
+        macStackView.addArrangedSubview(macLabel)
+        macStackView.addArrangedSubview(macSubtitle)
+        macStackView.addArrangedSubview(macImageView)
+        macStackView.addArrangedSubview(priceLabel)
+        macStackView.addArrangedSubview(buyButton)
+        constraints()
+        macStackView.setCustomSpacing(0, after: macLabel)
+    }
+    
 }

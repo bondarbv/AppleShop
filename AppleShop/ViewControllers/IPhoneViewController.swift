@@ -9,7 +9,7 @@ import UIKit
 
 class IPhoneViewController: UIViewController {
     
-    //MARK: -UI
+    //MARK: - UI
     let iphoneStackView: UIStackView = {
         $0.axis = .vertical
         $0.alignment = .fill
@@ -33,26 +33,26 @@ class IPhoneViewController: UIViewController {
     }(UILabel())
     
     let priceLabel: UILabel = {
-        $0.text = "From 999$"
+        $0.text = "From $999"
         $0.textAlignment = .center
         return $0
     }(UILabel())
     
     let iphoneImageView: UIImageView = {
-        $0.image = UIImage(named: "test")
+        $0.image = UIImage(named: "iphones")
         return $0
     }(UIImageView())
     
-    let orderButton: UIButton = {
-        $0.setTitle("Order", for: .normal)
+    let buyButton: UIButton = {
+        $0.setTitle("Buy", for: .normal)
         $0.backgroundColor = .systemBlue
         $0.layer.cornerRadius = 5
-        $0.addTarget(self, action: #selector(order), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(buy), for: .touchUpInside)
         return $0
     }(UIButton())
     
     
-    //MARK: -ViewLifecycle
+    //MARK: - ViewLifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -61,16 +61,16 @@ class IPhoneViewController: UIViewController {
         tabBarItem = UITabBarItem(title: "IPhones", image: UIImage(systemName: "iphone"), tag: 0)
     }
     
-    //MARK: -Methods
+    //MARK: - Methods
     
-    @objc private func order(sender: UIButton) {
-        if sender == orderButton {
+    @objc private func buy(sender: UIButton) {
+        if sender == buyButton {
             let vc = OrderIPhoneViewController()
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    //MARK: -Layout
+    //MARK: - Layout
     private func constraints() {
         NSLayoutConstraint.activate([
             iphoneStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
@@ -89,7 +89,7 @@ class IPhoneViewController: UIViewController {
         iphoneStackView.addArrangedSubview(iphoneSubtitle)
         iphoneStackView.addArrangedSubview(iphoneImageView)
         iphoneStackView.addArrangedSubview(priceLabel)
-        iphoneStackView.addArrangedSubview(orderButton)
+        iphoneStackView.addArrangedSubview(buyButton)
         constraints()
         iphoneStackView.setCustomSpacing(0, after: iphoneLabel)
     }
