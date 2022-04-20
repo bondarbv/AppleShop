@@ -13,6 +13,7 @@
 		47DB0F60280F50B6000E588B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47DB0F5E280F50B6000E588B /* LaunchScreen.storyboard */; };
 		47DB0F68280F5146000E588B /* MacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0F67280F5146000E588B /* MacViewController.swift */; };
 		47DB0F6A280F5174000E588B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 47DB0F69280F5174000E588B /* .gitignore */; };
+		47DB0F6E281031F7000E588B /* OrderIPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0F6D281031F7000E588B /* OrderIPhoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		47DB0F61280F50B6000E588B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47DB0F67280F5146000E588B /* MacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacViewController.swift; sourceTree = "<group>"; };
 		47DB0F69280F5174000E588B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		47DB0F6D281031F7000E588B /* OrderIPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderIPhoneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				47DB0F57280F50B4000E588B /* IPhoneViewController.swift */,
+				47DB0F6D281031F7000E588B /* OrderIPhoneViewController.swift */,
 				47DB0F67280F5146000E588B /* MacViewController.swift */,
 			);
 			path = ViewControllers;
@@ -154,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47DB0F6E281031F7000E588B /* OrderIPhoneViewController.swift in Sources */,
 				47DB0F58280F50B4000E588B /* IPhoneViewController.swift in Sources */,
 				47DB0F68280F5146000E588B /* MacViewController.swift in Sources */,
 				47DB0F54280F50B4000E588B /* AppDelegate.swift in Sources */,
