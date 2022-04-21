@@ -39,7 +39,7 @@ class MacViewController: UIViewController {
     }(UILabel())
     
     let macImageView: UIImageView = {
-        $0.image = UIImage(named: "mac")
+        $0.image = UIImage(named: "macbook")
         return $0
     }(UIImageView())
     
@@ -58,20 +58,32 @@ class MacViewController: UIViewController {
         navigationItem.title = "Macs"
         navigationController?.navigationBar.prefersLargeTitles = true
         tabBarItem = UITabBarItem(title: "Macs", image: UIImage(systemName: "desktopcomputer"), tag: 1)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: OrderIPhoneViewController().shoppingCartButton)
     }
     
     //MARK: - Methods
     @objc private func buy(sender: UIButton) {
         if sender == buyButton {
-            let vc = OrderMacViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            createAlertController(title: "Sorry", message: "This product is currently out of stock. You can leave an email and we will notify you of product availability", style: .alert)
         }
+    }
+    
+    private func createAlertController(title: String, message: String, style: UIAlertController.Style) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            _ = alertController.textFields?.first
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addTextField()
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        present(alertController, animated: true)
     }
     
     //MARK: - Layout
     private func constraints() {
         NSLayoutConstraint.activate([
-            macStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            macStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             macStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             macStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             

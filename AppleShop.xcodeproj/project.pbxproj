@@ -14,7 +14,7 @@
 		47DB0F68280F5146000E588B /* MacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0F67280F5146000E588B /* MacViewController.swift */; };
 		47DB0F6A280F5174000E588B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 47DB0F69280F5174000E588B /* .gitignore */; };
 		47DB0F6E281031F7000E588B /* OrderIPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0F6D281031F7000E588B /* OrderIPhoneViewController.swift */; };
-		47DB0F7028103C91000E588B /* OrderMacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0F6F28103C91000E588B /* OrderMacViewController.swift */; };
+		47DB0F7028103C91000E588B /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DB0F6F28103C91000E588B /* OrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		47DB0F67280F5146000E588B /* MacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacViewController.swift; sourceTree = "<group>"; };
 		47DB0F69280F5174000E588B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		47DB0F6D281031F7000E588B /* OrderIPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderIPhoneViewController.swift; sourceTree = "<group>"; };
-		47DB0F6F28103C91000E588B /* OrderMacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMacViewController.swift; sourceTree = "<group>"; };
+		47DB0F6F28103C91000E588B /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				47DB0F57280F50B4000E588B /* IPhoneViewController.swift */,
 				47DB0F6D281031F7000E588B /* OrderIPhoneViewController.swift */,
 				47DB0F67280F5146000E588B /* MacViewController.swift */,
-				47DB0F6F28103C91000E588B /* OrderMacViewController.swift */,
+				47DB0F6F28103C91000E588B /* OrderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47DB0F7028103C91000E588B /* OrderMacViewController.swift in Sources */,
+				47DB0F7028103C91000E588B /* OrderViewController.swift in Sources */,
 				47DB0F6E281031F7000E588B /* OrderIPhoneViewController.swift in Sources */,
 				47DB0F58280F50B4000E588B /* IPhoneViewController.swift in Sources */,
 				47DB0F68280F5146000E588B /* MacViewController.swift in Sources */,

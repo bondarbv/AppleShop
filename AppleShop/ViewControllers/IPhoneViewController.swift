@@ -39,7 +39,7 @@ class IPhoneViewController: UIViewController {
     }(UILabel())
     
     let iphoneImageView: UIImageView = {
-        $0.image = UIImage(named: "iphones")
+        $0.image = UIImage(named: "iphone")
         return $0
     }(UIImageView())
     
@@ -59,6 +59,7 @@ class IPhoneViewController: UIViewController {
         navigationItem.title = "IPhones"
         navigationController?.navigationBar.prefersLargeTitles = true
         tabBarItem = UITabBarItem(title: "IPhones", image: UIImage(systemName: "iphone"), tag: 0)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: OrderIPhoneViewController().shoppingCartButton)
     }
     
     //MARK: - Methods
@@ -73,7 +74,7 @@ class IPhoneViewController: UIViewController {
     //MARK: - Layout
     private func constraints() {
         NSLayoutConstraint.activate([
-            iphoneStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            iphoneStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             iphoneStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             iphoneStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             

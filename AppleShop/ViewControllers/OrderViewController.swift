@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderMacViewController: UIViewController {
+class OrderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
