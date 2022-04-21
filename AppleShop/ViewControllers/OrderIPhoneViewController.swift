@@ -79,6 +79,7 @@ class OrderIPhoneViewController: UIViewController {
     
     let maxSwitch: UISwitch = {
         $0.addTarget(self, action: #selector(maxMethod), for: .valueChanged)
+        $0.onTintColor = .systemBlue.withAlphaComponent(0.5)
         return $0
     }(UISwitch())
     
@@ -122,6 +123,12 @@ class OrderIPhoneViewController: UIViewController {
     }(UILabel())
     
     //MARK: - ViewLifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .never
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -139,7 +146,7 @@ class OrderIPhoneViewController: UIViewController {
             let segmentIndex = sender.selectedSegmentIndex
             iphoneImageView.image = iphoneColorImageArray[segmentIndex]
             if segmentIndex == 0 {
-                sender.selectedSegmentTintColor = .systemBlue
+                sender.selectedSegmentTintColor = .systemBlue.withAlphaComponent(0.5)
             } else if segmentIndex == 1 {
                 sender.selectedSegmentTintColor = .systemYellow.withAlphaComponent(0.5)
             }
@@ -190,7 +197,7 @@ class OrderIPhoneViewController: UIViewController {
     private func createColorSegmentedControl() {
         colorSegmentedControl = UISegmentedControl(items: iphoneColorArray)
         colorSegmentedControl.selectedSegmentIndex = 0
-        colorSegmentedControl.selectedSegmentTintColor = .systemBlue
+        colorSegmentedControl.selectedSegmentTintColor = .systemBlue.withAlphaComponent(0.5)
         colorSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         colorSegmentedControl.addTarget(self, action: #selector(changeColorSegment), for: .valueChanged)
     }
@@ -198,7 +205,7 @@ class OrderIPhoneViewController: UIViewController {
     private func createCapacitySegmentedControl() {
         capacitySegmentedControl = UISegmentedControl(items: iphoneCapacityArray)
         capacitySegmentedControl.selectedSegmentIndex = 0
-        capacitySegmentedControl.selectedSegmentTintColor = .systemBlue
+        capacitySegmentedControl.selectedSegmentTintColor = .systemBlue.withAlphaComponent(0.5)
         capacitySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         capacitySegmentedControl.addTarget(self, action: #selector(changeCapacitrySegment), for: .valueChanged)
     }
@@ -208,8 +215,6 @@ class OrderIPhoneViewController: UIViewController {
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        
-//            modelStackView.trailingAnchor.constraint(equalTo: specsStackView.trailingAnchor, constant: -100),
             
             iphoneImageView.heightAnchor.constraint(equalToConstant: 400)
         ])
