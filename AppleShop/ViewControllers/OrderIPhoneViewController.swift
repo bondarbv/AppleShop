@@ -63,17 +63,12 @@ class OrderIPhoneViewController: UIViewController {
     var colorSegmentedControl = UISegmentedControl()
     var capacitySegmentedControl = UISegmentedControl()
     
-    let shoppingCartButton: UIButton = {
-        $0.setImage(UIImage(systemName: "cart"), for: .normal)
-        $0.addTarget(self, action: #selector(checkOrder), for: .touchUpInside)
-        return $0
-    }(UIButton())
-    
-    let addButton: UIButton = {
+    static let addButton: UIButton = {
         $0.setTitle("Add to cart", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .systemBlue
         $0.layer.cornerRadius = 5
+        $0.addTarget(self, action: #selector(createOrder), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -83,12 +78,12 @@ class OrderIPhoneViewController: UIViewController {
         return $0
     }(UISwitch())
     
-    let iphoneImageView: UIImageView = {
+    public let iphoneImageView: UIImageView = {
         $0.image = UIImage(named: "blue")
         return $0
     }(UIImageView())
-
-    let totalPriceLabel: UILabel = {
+    
+    public let totalPriceLabel: UILabel = {
         $0.text = "$999"
         $0.font = UIFont.boldSystemFont(ofSize: 30)
         $0.textAlignment = .center
@@ -123,22 +118,39 @@ class OrderIPhoneViewController: UIViewController {
     }(UILabel())
     
     //MARK: - ViewLifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+        navigationItem.title = "IPhone 13 Pro"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(checkOrder))
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .never
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupLayout()
-        navigationItem.title = "IPhone 13 Pro"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: shoppingCartButton)
-    }
-    
     //MARK: - Methods
     @objc private func checkOrder() {
-        
+        let vc = OrderViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func createOrder() {
+        OrderViewController.orderLabel.text = """
+\(navigationItem.title ?? "")
+\(iphoneColorArray[colorSegmentedControl.selectedSegmentIndex])
+\(iphoneCapacityArray[capacitySegmentedControl.selectedSegmentIndex])
+\(totalPriceLabel.text ?? "")
+"""
+        OrderViewController.orderImageView.image = iphoneColorImageArray[colorSegmentedControl.selectedSegmentIndex]
+        OrderIPhoneViewController.addButton.setTitle("Product in cart", for: .normal)
+        OrderIPhoneViewController.addButton.backgroundColor = .systemBlue.withAlphaComponent(0.5)
+        OrderIPhoneViewController.addButton.isEnabled = false
     }
     
     @objc private func changeColorSegment(sender: UISegmentedControl) {
@@ -228,7 +240,7 @@ class OrderIPhoneViewController: UIViewController {
         mainStackView.addArrangedSubview(iphoneImageView)
         mainStackView.addArrangedSubview(valueStackView)
         mainStackView.addArrangedSubview(totalPriceLabel)
-        mainStackView.addArrangedSubview(addButton)
+        mainStackView.addArrangedSubview(OrderIPhoneViewController.addButton)
         
         valueStackView.addArrangedSubview(labelsStackView)
         valueStackView.addArrangedSubview(specsStackView)
