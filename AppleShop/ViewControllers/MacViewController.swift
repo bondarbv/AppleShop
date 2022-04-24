@@ -57,11 +57,21 @@ class MacViewController: UIViewController {
         setupLayout()
         navigationItem.title = "Macs"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarItem = UITabBarItem(title: "Macs", image: UIImage(systemName: "desktopcomputer"), tag: 1)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: OrderIPhoneViewController().shoppingCartButton)
+        tabBarItem = UITabBarItem(title: "Macs",
+                                  image: UIImage(systemName: "desktopcomputer"),
+                                  tag: 1)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(checkOrder))
     }
     
     //MARK: - Methods
+    @objc private func checkOrder() {
+        let vc = OrderViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc private func buy(sender: UIButton) {
         if sender == buyButton {
             createAlertController(title: "Sorry", message: "This product is currently out of stock. You can leave an email and we will notify you of product availability", style: .alert)

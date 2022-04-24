@@ -58,11 +58,20 @@ class IPhoneViewController: UIViewController {
         setupLayout()
         navigationItem.title = "IPhones"
         navigationController?.navigationBar.prefersLargeTitles = true
-        tabBarItem = UITabBarItem(title: "IPhones", image: UIImage(systemName: "iphone"), tag: 0)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: OrderIPhoneViewController().shoppingCartButton)
+        tabBarItem = UITabBarItem(title: "IPhones",
+                                  image: UIImage(systemName: "iphone"),
+                                  tag: 0)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action:#selector(checkOrder))
     }
     
     //MARK: - Methods
+    @objc private func checkOrder() {
+        let vc = OrderViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc private func buy(sender: UIButton) {
         if sender == buyButton {
@@ -82,7 +91,7 @@ class IPhoneViewController: UIViewController {
             iphoneImageView.heightAnchor.constraint(equalToConstant: 322)
         ])
     }
-
+    
     private func setupLayout() {
         view.backgroundColor = .systemGray6
         view.addSubview(iphoneStackView)
